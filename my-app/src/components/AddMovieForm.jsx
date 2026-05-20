@@ -1,6 +1,26 @@
-function AddMovieForm() {
+import { useState } from "react";
+
+function AddMovieForm({ onAddMovie }) {
+  const [title, setTitle] = useState("");
+  const [rating, setRating] = useState("0");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const newMovie = {
+      id: Date.now(),
+      title: title,
+      rating: Number(rating),
+    };
+
+    onAddMovie(newMovie);
+
+    setTitle("");
+    setRating("0");
+  }
+
   return (
-    <form id="add-movie-form">
+    <form id="add-movie-form" onSubmit={handleSubmit}>
       <fieldset>
         <legend>Lägg till en film</legend>
 
@@ -9,6 +29,8 @@ function AddMovieForm() {
           type="text"
           id="title-field"
           className="form-control"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <label htmlFor="rating-field">Betyg:</label>
@@ -16,6 +38,8 @@ function AddMovieForm() {
         <select
           id="rating-field"
           className="form-control"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
         >
           <option value="0">Välj betyg här...</option>
           <option value="1">1</option>
