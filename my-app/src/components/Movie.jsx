@@ -11,11 +11,17 @@ function Movie({ movie, onDeleteMovie }) {
   }
 
   return (
-    <li className="list-group-item">
-      {movie.title}
-      {stars}
+    <li className="list-group-item d-flex justify-content-between align-items-center">
 
-      <img src={deleteIcon} alt="delete" width="25" onClick={() =>  onDeleteMovie(movie.id)}/>
+      <span>
+        {movie.title}
+      </span>
+
+      <div>
+        {stars}
+        
+        <img src={deleteIcon} alt="delete" width="25" onClick={() => onDeleteMovie(movie.id)}/>
+      </div>
     </li>
   );
 }
