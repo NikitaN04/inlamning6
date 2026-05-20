@@ -7,14 +7,24 @@ function AddMovieForm({ onAddMovie }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    if (title.trim() === "") {
+      alert("Du måste ange en titel.");
+      return;
+    }
+  
+    if (rating === "0") {
+      alert("Du måste välja ett betyg.");
+      return;
+    }
+  
     const newMovie = {
       id: Date.now(),
       title: title,
       rating: Number(rating),
     };
-
+  
     onAddMovie(newMovie);
-
+  
     setTitle("");
     setRating("0");
   }
