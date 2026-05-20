@@ -34,7 +34,10 @@ function App() {
 
     setMovies(sorted);
   }
-  
+  function addMovie(movie) {
+    setMovies([...movies, movie]);
+  } 
+
   return (
     <div className="container mt-5">
       <h1 className="mb-4">Min filmlista</h1>
@@ -45,7 +48,7 @@ function App() {
         onSortByTitle={sortByTitle}
         onSortByRating={sortByRating}
       />
-
+  
 
     </div>
   );
