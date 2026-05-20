@@ -63,7 +63,9 @@ function AddMovieForm({ onAddMovie }) {
           type="submit"
           className="btn btn-success mt-3"
           value="Spara film"
+
         />
+        <h2>Inlagda filmer:</h2>
       </fieldset>
     </form>
   );
