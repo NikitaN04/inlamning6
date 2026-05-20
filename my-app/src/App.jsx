@@ -1,14 +1,25 @@
 import { useState } from "react";
 import AddMovieForm from "./components/AddMovieForm";
-//import MovieList from "./components/MovieList";
+import MovieList from "./components/MovieList";
 import SortButtons from "./components/SortButtons";
 
 function App() {
   const [movies, setMovies] = useState([]);
 
-
   function addMovie(movie) {
-    console.log(movie);
+
+    setMovies([...movies, movie]);
+  
+  }
+
+  function deleteMovie(id) {
+
+    const updatedMovies = movies.filter(
+      (movie) => movie.id !== id
+    );
+
+    setMovies(updatedMovies);
+
   }
 
   function sortByTitle() {
@@ -34,9 +45,7 @@ function App() {
 
     setMovies(sorted);
   }
-  function addMovie(movie) {
-    setMovies([...movies, movie]);
-  } 
+
 
   return (
     <div className="container mt-5">
@@ -44,10 +53,13 @@ function App() {
 
       <AddMovieForm onAddMovie={addMovie} />
 
+      <MovieList
+        movies={movies}
+        onDeleteMovie={deleteMovie}/>
+
       <SortButtons
         onSortByTitle={sortByTitle}
-        onSortByRating={sortByRating}
-      />
+        onSortByRating={sortByRating}/>
   
 
     </div>
