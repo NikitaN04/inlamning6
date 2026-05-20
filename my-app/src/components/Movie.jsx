@@ -1,3 +1,6 @@
+import star from "../assets/star.png";
+import deleteIcon from "../assets/delete.png";
+
 function Movie({ movie, onDeleteMovie }) {
   let stars = [];
 
