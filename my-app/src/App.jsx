@@ -1,22 +1,23 @@
 import { useState } from "react";
 import AddMovieForm from "./components/AddMovieForm";
-import MovieList from "./components/MovieList";
-import SortButtons from "./components/SortButtons";
+//import MovieList from "./components/MovieList";
+//import SortButtons from "./components/SortButtons";
 
 function App() {
   const [movies, setMovies] = useState([]);
+
+
+  function addMovie(movie) {
+    console.log(movie);
+  }
 
   return (
     <div className="container mt-5">
       <h1 className="mb-4">Min filmlista</h1>
 
-      <AddMovieForm />
+      <AddMovieForm onAddMovie={addMovie} />
 
-      <MovieList />
 
-      <SortButtons 
-      onSortByTitle={sortByTitle}
-        onSortByRating={sortByRating}/>
     </div>
   );
 }
